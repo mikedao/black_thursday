@@ -1,13 +1,9 @@
 class Merchant
+  attr_reader :id,
+              :name
 
   def initialize(data)
-  end
-
-  def id
-    5
-  end
-
-  def name
-    "Turing School"
+    @id   = data[:id]
+    @name = data[:name]
   end
 end
