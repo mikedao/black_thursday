@@ -9,4 +9,10 @@ class MerchantTest < Minitest::Test
     assert_equal 5, m.id
     assert_equal "Turing School", m.name
   end
+
+  def test_merchant_has_a_different_name_and_id
+    m = Merchant.new({:id => 4, :name => "Terd School"})
+    assert_equal 4, m.id
+    assert_equal "Terd School", m.name
+  end
 end
