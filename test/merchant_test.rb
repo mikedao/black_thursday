@@ -11,8 +11,8 @@ class MerchantTest < Minitest::Test
   end
 
   def test_merchant_has_a_different_name_and_id
-    merchant = Merchant.new({:id => 4, :name => "Terd School"})
-    assert_equal 4, merchant.id
-    assert_equal "Terd School", merchant.name
+    mt = Merchant.new({:id => 4, :name => "Terd School"})
+    assert_equal 4, mt.id
+    assert_equal "Terd School", mt.name
   end
 end
