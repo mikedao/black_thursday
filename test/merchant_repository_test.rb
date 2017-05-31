@@ -49,12 +49,23 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal 2, result.last.id
   end
 
+  def test_merchant_repo_finds_all_name_case_insensitive
+    mr = MerchantRepository.new(@data)
+
+    result = mr.find_all_by_name("Gold")
+
+    assert_equal 2, result.count
+    assert_instance_of Array, result
+    assert_equal 12334135, result.first.id
+    assert_equal 2, result.last.id
+  end
+
   def test_merchant_repo_finds_all_name_empty_array
     mr = MerchantRepository.new(@data)
 
     result = mr.find_all_by_name("zzz")
 
     assert_instance_of Array, result
-    assert result.empty?
+    assert_empty result
   end
 end
