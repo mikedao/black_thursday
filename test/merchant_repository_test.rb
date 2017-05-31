@@ -4,7 +4,7 @@ class MerchantRepositoryTest < Minitest::Test
 
   def setup
     path = "./test/fixtures/merchants_fixture.csv"
-    @data = CSV.open(path, headers: true, header_converters: :symbol)
+    @data = FileIO.read_file(path)
   end
 
   def test_merchant_repo_can_be_created_with_data

@@ -17,7 +17,4 @@ class SalesEngine
   def self.from_csv(path_hash)
     new(path_hash)
   end
-
-
-
 end
