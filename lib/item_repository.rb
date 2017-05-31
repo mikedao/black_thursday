@@ -6,6 +6,10 @@ class ItemRepository
     create_items(data)
   end
 
+  def all
+    @items
+  end
+
   private
 
   def create_items(data)

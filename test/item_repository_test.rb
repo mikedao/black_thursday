@@ -11,7 +11,7 @@ class ItemRepositoryTest < Minitest::Test
     ir = ItemRepository.new(@data)
 
     assert_instance_of Array, ir.all
-    assert_equal 5, ir.all.count
+    assert_equal 10, ir.all.count
   end
 
 
