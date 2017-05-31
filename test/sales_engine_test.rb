@@ -9,7 +9,7 @@ class SalesEngineTest < Minitest::Test
       :merchants => "./data/merchants.csv",
     })
 
-    assert_instance_of se, SalesEngine
+    assert_instance_of SalesEngine, se
   end
 
 
