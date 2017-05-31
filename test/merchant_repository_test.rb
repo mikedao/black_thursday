@@ -16,11 +16,8 @@ class MerchantRepositoryTest < Minitest::Test
   def test_merchant_repo_all_returns_all_merchant_objects
     mr = MerchantRepository.new(@data)
 
-    result = mr.all.all? do |merchant|
-      merchant.is_a?(Merchant)
-    end
-
-    assert result
+    assert mr.all.all? { |merchant| merchant.is_a?(Merchant) }
+    assert_equal 10, mr.all.count
   end
 
   def test_merchant_repo_finds_by_id

@@ -12,7 +12,7 @@ class SalesEngineTest < Minitest::Test
       :merchants => "./data/merchants.csv",
     })
 
-    assert_instance_of MerchantRepository, se.merchant_repo
-    assert_instance_of ItemRepository, se.item_repo
+    assert_instance_of MerchantRepository, se.merchants
+    assert_instance_of ItemRepository, se.items
   end
 end
