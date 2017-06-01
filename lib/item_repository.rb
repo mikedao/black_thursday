@@ -1,8 +1,9 @@
 require "./lib/item"
 
 class ItemRepository
-  def initialize(data)
-    @items = []
+  def initialize(data, parent = nil)
+    @parent = parent
+    @items  = []
     create_items(data)
   end
 
@@ -44,6 +45,10 @@ class ItemRepository
     @items.find_all do |item|
       item.merchant_id == merchant_id
     end
+  end
+
+  def find_merchant_by_id(id)
+    @parent.find_merchant_by_id(id)
   end
 
   private

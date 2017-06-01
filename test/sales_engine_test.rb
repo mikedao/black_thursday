@@ -27,4 +27,16 @@ class SalesEngineTest < Minitest::Test
     assert_equal 1, result.first.id
     assert_equal 2, result.last.id
   end
+
+  def test_se_can_find_merchant_by_id
+    se = SalesEngine.from_csv({
+      :items     => "./test/fixtures/items_fixture.csv",
+      :merchants => "./test/fixtures/merchants_fixture.csv",
+    })
+
+    result = se.find_merchant_by_id(12334105)
+
+    assert_instance_of Merchant, result
+    assert_equal 12334105, result.id
+  end
 end

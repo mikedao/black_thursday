@@ -150,4 +150,14 @@ class ItemRepositoryTest < Minitest::Test
     assert_empty result
   end
 
+  def test_item_calls_parent_when_looking_for_merchant
+    parent = Minitest::Mock.new
+    ir = ItemRepository.new(@data, parent)
+    id = ir.all.first.id
+    parent.expect(:find_merchant_by_id, nil, [id])
+
+    ir.find_merchant_by_id(id)
+
+    parent.verify
+  end
 end

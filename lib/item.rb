@@ -9,7 +9,8 @@ class Item
             :created_at,
             :updated_at
 
-  def initialize(data)
+  def initialize(data, parent = nil)
+    @parent       = parent
     @id           = data[:id].to_i
     @name         = data[:name]
     @description  = data[:description]
@@ -21,5 +22,9 @@ class Item
 
   def unit_price_to_dollars
     @unit_price.to_f / 100
+  end
+
+  def merchant
+    @parent.find_merchant_by_id(self.id)
   end
 end

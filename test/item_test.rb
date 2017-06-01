@@ -70,4 +70,22 @@ class ItemTest < Minitest::Test
     assert_equal 40.75, i.unit_price_to_dollars
   end
 
+  def test_item_calls_parent_when_looking_for_merchant
+    parent = Minitest::Mock.new
+    data = {
+              :id          => "1",
+              :name        => "Pencil",
+              :description => "You can use it to write things",
+              :unit_price  => "4075",
+              :merchant_id => "1",
+              :created_at  => "2016-01-11 20:59:20 UTC",
+              :updated_at  => "2009-12-09 12:08:04 UTC"
+    }
+    item = Item.new(data, parent)
+    parent.expect(:find_merchant_by_id, nil, [1])
+
+    item.merchant
+
+    parent.verify
+  end
 end
