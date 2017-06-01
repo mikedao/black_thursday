@@ -1,8 +1,9 @@
 require "./lib/merchant"
 
 class MerchantRepository
-  def initialize(data)
-    @merchants = []
+  def initialize(data, parent = nil)
+    @parent     = parent
+    @merchants  = []
     create_merchants(data)
   end
 
@@ -22,6 +23,10 @@ class MerchantRepository
     end
   end
 
+  def find_items_by_merchant_id(id)
+    @parent.find_items_by_merchant_id(id)
+  end
+  
   private
 
   def create_merchants(data)

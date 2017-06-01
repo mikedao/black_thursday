@@ -68,4 +68,16 @@ class MerchantRepositoryTest < Minitest::Test
     assert_instance_of Array, result
     assert_empty result
   end
+
+  def test_items_by_merchant_id_calls_parent
+    parent = Minitest::Mock.new
+    mr = MerchantRepository.new(@data, parent)
+    id = mr.all.first.id
+    parent.expect(:find_items_by_merchant_id, nil, [id])
+
+    mr.find_items_by_merchant_id(id)
+
+    parent.verify
+  end
+
 end

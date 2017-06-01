@@ -17,4 +17,14 @@ class MerchantTest < Minitest::Test
     assert_equal "Kenny Carpets", m.name
   end
 
+  def test_merchant_has_items_calls_parent
+    parent = Minitest::Mock.new
+    data = {:id => "265", :name => "Kenny Carpets"}
+    merchant = Merchant.new(data, parent)
+    parent.expect(:find_items_by_merchant_id, nil, [265])
+
+    merchant.items
+
+    parent.verify
+  end
 end

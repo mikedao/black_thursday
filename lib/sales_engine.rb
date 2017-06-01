@@ -17,4 +17,9 @@ class SalesEngine
   def self.from_csv(path_hash)
     new(path_hash)
   end
+
+  def find_items_by_merchant_id(id)
+    items.find_all_by_merchant_id(id)
+  end
+
 end
